@@ -11,6 +11,7 @@
 
 void main1(void) {
 
+    
     int number;
     scanf("%d", &number);
     printf("number = %d\n", number);
@@ -55,6 +56,8 @@ void main(void){
         //重新分配内存，如果可以拓展就拓展，否则就重新分配
         //拓展就是原来地址后面增加内存
         //不够的情况下，就回收原来的内存，并在回收之前分配一片内存，将原来的数据拷贝到新的内存之中
+
+        //内存释放后，指针应该赋值为空，就可以规避再次引用
         pointerIntegerAdd =(int *)realloc((void *)pointerInteger, sizeof(int)*(addNumber+number));
         for (int i = number; i < addNumber + number; ++i) {
             pointerIntegerAdd[i] = i;
@@ -67,6 +70,7 @@ void main(void){
     for (int i = 0; i < number + addNumber; ++i) {
         printf("%d\n",pointerIntegerAdd[i]);
     }
+
 
     free(pointerIntegerAdd);
     return;
